@@ -37,6 +37,10 @@ function callajax(term, action, type, token, div) {
         success: function (response) {
             action(response, div);
         },
+        error: function () {
+            $("#results").attr("class", "noshow");
+            $("#login").removeAttr("class", "noshow");
+        },
     });
 }
 
