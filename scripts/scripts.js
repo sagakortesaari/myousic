@@ -13,6 +13,33 @@ $("#login-button").submit(function () {
     return false;
 });
 
+function topsongs(response, div) {
+    for (let index = 0; index < 20; index++) {
+        let tracks = document.getElementById(div);
+        let newtrack = document.createElement("li");
+        newtrack.innerHTML =
+            response.items[index].name +
+            " by " +
+            response.items[index].artists[0].name;
+        tracks.appendChild(newtrack);
+    }
+}
+
+function callajax(term, action, type, token, div) {
+    $.ajax({
+        url: "https://api.spotify.com/v1/me/top/" + type,
+        headers: {
+            Authorization: "Bearer " + token,
+        },
+        data: {
+            time_range: term,
+        },
+        success: function (response) {
+            action(response, div);
+        },
+    });
+}
+
 (function () {
     var access_token;
 
@@ -21,32 +48,25 @@ $("#login-button").submit(function () {
         split = split[1].split("&");
         split = split[0].split("=");
         access_token = split[1];
-        console.log(access_token);
     }
 
     encodeURL();
-    console.log(access_token);
 
     if (access_token) {
-        $.ajax({
-            url: "https://api.spotify.com/v1/me/top/tracks",
-            headers: {
-                Authorization: "Bearer " + access_token,
-            },
-            data: {
-                time_range: "medium_term",
-            },
-            success: function (response) {
-                for (let index = 0; index < 20; index++) {
-                    let tracks = document.getElementById("toptracks");
-                    let newtrack = document.createElement("div");
-                    newtrack.innerHTML =
-                        response.items[index].name +
-                        " by " +
-                        response.items[index].artists[0].name;
-                    tracks.appendChild(newtrack);
-                }
-            },
-        });
+        callajax(
+            "short_term",
+            topsongs,
+            "tracks",
+            access_token,
+            "toptracks-shortterm"
+        );
+
+        callajax(
+            "medium_term",
+            topsongs,
+            "tracks",
+            access_token,
+            "toptracks-mediumterm"
+        );
     }
 })();
