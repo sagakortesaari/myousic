@@ -42,17 +42,23 @@ function callajax(term, action, type, token, div) {
 
 (function () {
     var access_token;
+    var results = $("#results");
 
     function encodeURL() {
         var split = window.location.href.split("#");
-        split = split[1].split("&");
-        split = split[0].split("=");
-        access_token = split[1];
+        if (split[1]) {
+            split = split[1].split("&");
+            split = split[0].split("=");
+            access_token = split[1];
+        }
     }
 
     encodeURL();
 
     if (access_token) {
+        results.removeAttr("class", "noshow");
+        $("#login").attr("class", "noshow");
+
         callajax(
             "short_term",
             topsongs,
@@ -68,5 +74,7 @@ function callajax(term, action, type, token, div) {
             access_token,
             "toptracks-mediumterm"
         );
+    } else {
+        results.attr("class", "noshow");
     }
 })();
