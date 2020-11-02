@@ -1,6 +1,7 @@
 function topsongs(response, div) {
+    let tracks = document.getElementById(div);
+
     for (let index = 0; index < 20; index++) {
-        let tracks = document.getElementById(div);
         let newtrack = document.createElement("li");
         newtrack.innerHTML =
             response.items[index].name +
