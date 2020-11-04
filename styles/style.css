@@ -12,7 +12,7 @@ body {
     justify-content: center;
     align-items: center;
 }
-#spotify {
+.spotify {
     padding: 15px;
     color: #3b39c2;
     border: 1px solid #3b39c2;
@@ -23,7 +23,7 @@ body {
     align-items: center;
 }
 
-#spotify:hover {
+.spotify:hover {
     cursor: pointer;
     /* transform: scale(1.1); */
 }
@@ -47,4 +47,13 @@ body {
     text-align: center;
     margin-bottom: 20px;
     font-family: Work Sans;
+}
+
+#logout {
+    display: none;
+}
+
+#flex-container {
+    display: flex;
+    justify-content: center;
 }

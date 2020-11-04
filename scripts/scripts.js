@@ -58,6 +58,7 @@ function encodeURL() {
     var stateKey = "spotify_auth_state";
     var results = $("#results");
     var login = $("#login");
+    var logout = $("#logout");
 
     var fragments = encodeURL();
 
@@ -69,6 +70,7 @@ function encodeURL() {
             results.show();
             login.hide();
             localStorage.removeItem(stateKey);
+            logout.show();
 
             callajax(
                 "short_term",
