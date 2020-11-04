@@ -25,7 +25,6 @@ body {
 
 .spotify:hover {
     cursor: pointer;
-    /* transform: scale(1.1); */
 }
 
 #icon {
@@ -53,7 +52,7 @@ body {
     display: none;
 }
 
-#flex-container {
+.flex-container {
     display: flex;
     justify-content: center;
 }

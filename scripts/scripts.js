@@ -69,7 +69,7 @@ function encodeURL() {
         if (fragments.access_token && currentState == storedState) {
             results.show();
             login.hide();
-            localStorage.removeItem(stateKey);
+            //localStorage.removeItem(stateKey);
             logout.show();
 
             callajax(
@@ -114,3 +114,7 @@ function encodeURL() {
         return false;
     });
 })();
+
+$("#logout-button").submit(function () {
+    localStorage.removeItem("spotify_auth_state");
+});
