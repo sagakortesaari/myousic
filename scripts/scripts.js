@@ -118,3 +118,7 @@ function encodeURL() {
 $("#logout-button").submit(function () {
     localStorage.removeItem("spotify_auth_state");
 });
+
+(function () {
+    console.log("hello");
+})();

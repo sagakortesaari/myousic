@@ -21,6 +21,7 @@ body {
     font-size: 13pt;
     display: flex;
     align-items: center;
+    margin-bottom: 20px;
 }
 
 .spotify:hover {
@@ -50,9 +51,61 @@ body {
 
 #logout {
     display: none;
+    margin-bottom: 20px;
 }
 
 .flex-container {
     display: flex;
-    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+@keyframes fadeInUp {
+    0% {
+        -webkit-transform: translate(0, 0);
+        -ms-transform: translate(0, 0);
+        transform: translate(0, 0);
+    }
+
+    100% {
+        opacity: 0.6;
+        -webkit-transform: translate(100%, 0);
+        -ms-transform: translate(100%, 0);
+        transform: translate(100%, 0);
+    }
+}
+
+.fadeInUp {
+    animation: fadeInUp;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+.delay24s {
+    animation-delay: 24s;
+    animation-duration: 40s;
+}
+
+.delay12s {
+    animation-delay: 12s;
+    animation-duration: 36s;
+}
+
+.delay10s {
+    animation-delay: 10s;
+    animation-duration: 32s;
+}
+
+.delay5s {
+    animation-delay: 5s;
+    animation-duration: 44s;
+}
+
+.delay32s {
+    animation-delay: 32s;
+    animation-duration: 39s;
+}
+
+.opac {
+    opacity: 0;
 }
