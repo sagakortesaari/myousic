@@ -1,5 +1,7 @@
 body {
     background-color: #c6c1df;
+    max-width: 2000px;
+    overflow-x: hidden;
 }
 
 @font-face {
@@ -38,7 +40,8 @@ body {
 
 .header {
     margin-bottom: 20px;
-    font-size: 36pt;
+    font-size: 44pt;
+    margin-top: 40px;
     text-align: center;
     font-family: Bluu;
 }
@@ -51,13 +54,20 @@ body {
 
 #logout {
     display: none;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
 
 .flex-container {
     display: flex;
     align-items: center;
     flex-direction: column;
+}
+
+#mediumterm,
+#shortterm {
+    width: 600px;
+    background-color: white;
+    padding: 30px;
 }
 
 @keyframes fadeInUp {
