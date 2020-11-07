@@ -50,44 +50,47 @@
         <div class="flex-container" id="logout-button">
             <form action="http://api.dcronqvist.se:12432">
                 <button class="spotify text" id="logout">
-                    LOGOUT
+                    SIGN OUT
                 </button>
             </form>
         </div>
 
         <div id="results" class="text flex-container">
-            <div id="longterm"> <b> 🎵 Top tracks - long term (years) </b>
-                <ol id="toptracks-longterm"></ol>
-            </div>
-            <div id="mediumterm"> <b> 🎵 Top tracks - medium term (6 months) </b>
-                <ol id="toptracks-mediumterm"></ol>
-            </div>
-            <div id="shortterm"> <b> 🎵 Top tracks - short term (4 weeks) </b>
-                <ol id="toptracks-shortterm"></ol>
+            <div id="results-tracks">
+                <div id="longterm"> <b> 🎵 Top tracks - long term (years) </b>
+                    <ol id="toptracks-longterm"></ol>
+                </div>
+                <div id="mediumterm"> <b> 🎵 Top tracks - medium term (6 months) </b>
+                    <ol id="toptracks-mediumterm"></ol>
+                </div>
+                <div id="shortterm"> <b> 🎵 Top tracks - short term (4 weeks) </b>
+                    <ol id="toptracks-shortterm"></ol>
+                </div>
             </div>
 
-            <div id="longterm-artist"> <b> 🎵 Top artist - long term (years) </b>
-                <ol id="topartists-longterm"></ol>
+            <div id="results-artists">
+                <div id="longterm-artist"> <b> 🎵 Top artist - long term (years) </b>
+                    <ol id="topartists-longterm"></ol>
+                </div>
+                <div id="mediumterm-artist"> <b> 🎵 Top artist - medium term (6 months) </b>
+                    <ol id="topartists-mediumterm"></ol>
+                </div>
+                <div id="shortterm-artist"> <b> 🎵 Top artist - short term (4 weeks) </b>
+                    <ol id="topartists-shortterm"></ol>
+                </div>
             </div>
-            <div id="mediumterm-artist"> <b> 🎵 Top artist - medium term (6 months) </b>
-                <ol id="topartists-mediumterm"></ol>
-            </div>
-            <div id="shortterm-artist"> <b> 🎵 Top artist - short term (4 weeks) </b>
-                <ol id="topartists-shortterm"></ol>
-            </div>
-    
         </div>
 
 
         <div id="footer">
-                <div class="footer-child">
+                <div class="footer-child" id="menu-topartists">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 27 27" style="margin-right: 0">
                         <path fill="#514cec" id="Icon_ionic-md-person" data-name="Icon ionic-md-person" d="M18,18a6.75,6.75,0,1,0-6.75-6.75A6.77,6.77,0,0,0,18,18Zm0,3.375c-4.472,0-13.5,2.278-13.5,6.75V31.5h27V28.125C31.5,23.653,22.472,21.375,18,21.375Z" transform="translate(-4.5 -4.5)"/>
                       </svg>
                       
                       Top Artists
                 </div>
-                <div class="footer-child">
+                <div class="footer-child" id="menu-toptracks">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 22.507 29.25">
                         <path fill="#514cec" id="Icon_ionic-ios-musical-notes" data-name="Icon ionic-ios-musical-notes" d="M28.568,3.389c-.33.063-14.2,2.756-14.5,2.813a.623.623,0,0,0-.57.563V23.646a1.939,1.939,0,0,1-.169.823,1.874,1.874,0,0,1-1.132.893c-.232.077-.548.148-.921.232-1.695.38-4.528,1.027-4.528,3.642a3.219,3.219,0,0,0,2.932,3.34,3.428,3.428,0,0,0,.5.049h0a8.679,8.679,0,0,0,3.6-.928,3.788,3.788,0,0,0,1.695-3.361V13.395a.558.558,0,0,1,.45-.548l10.688-2.159a.562.562,0,0,1,.675.548v9.2a2.016,2.016,0,0,1-.176.942,1.869,1.869,0,0,1-1.139.893c-.232.077-.619.148-.991.232-1.695.38-4.528,1.02-4.528,3.635a3.225,3.225,0,0,0,2.939,3.4,5.811,5.811,0,0,0,1.364-.063,8.061,8.061,0,0,0,2.566-.914,3.706,3.706,0,0,0,1.934-3.389V3.93A.557.557,0,0,0,28.568,3.389Z" transform="translate(-6.75 -3.375)"/>
                       </svg>

@@ -62,12 +62,25 @@ function encodeURL() {
     }
 }
 
+function callajax_songs(access_token) {
+    callajax("short_term", "tracks", access_token, "toptracks-shortterm");
+
+    callajax("medium_term", "tracks", access_token, "toptracks-mediumterm");
+
+    callajax("long_term", "tracks", access_token, "toptracks-longterm");
+}
+
+function callajax_artists(access_token) {
+    callajax("long_term", "artists", access_token, "topartists-longterm");
+}
+
 (function () {
     var stateKey = "spotify_auth_state";
     var results = $("#results");
     var login = $("#login");
     var logout = $("#logout");
     var footer = $("#footer");
+    var artists_called = false;
 
     var fragments = encodeURL();
 
@@ -80,34 +93,28 @@ function encodeURL() {
             login.hide();
             //localStorage.removeItem(stateKey);
             logout.show();
+            $("#results-artists").hide();
 
-            callajax(
-                "short_term",
-                "tracks",
-                fragments.access_token,
-                "toptracks-shortterm"
-            );
+            callajax_songs(fragments.access_token);
 
-            callajax(
-                "medium_term",
-                "tracks",
-                fragments.access_token,
-                "toptracks-mediumterm"
-            );
+            $("#menu-topartists").click(function () {
+                artists = true;
+                tracks = false;
+                $("#results-tracks").hide();
+                $("#results-artists").show();
 
-            callajax(
-                "long_term",
-                "tracks",
-                fragments.access_token,
-                "toptracks-longterm"
-            );
+                if (artists_called != true) {
+                    callajax_artists(fragments.access_token);
+                    artists_called = true;
+                }
+            });
 
-            callajax(
-                "long_term",
-                "artists",
-                fragments.access_token,
-                "topartists-longterm"
-            );
+            $("#menu-toptracks").click(function () {
+                tracks = true;
+                artists = false;
+                $("#results-tracks").show();
+                $("#results-artists").hide();
+            });
         } else {
             login.show();
             results.hide();
@@ -141,7 +148,3 @@ function encodeURL() {
 $("#logout-button").submit(function () {
     localStorage.removeItem("spotify_auth_state");
 });
-
-(function () {
-    console.log("hello");
-})();
