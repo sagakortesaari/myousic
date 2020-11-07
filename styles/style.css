@@ -104,3 +104,33 @@ body {
         font-size: 10pt;
     }
 }
+
+.footer {
+    display: none;
+}
+
+@media screen and (max-width: 700px) {
+    .footer {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        font-family: Work Sans;
+        display: flex;
+        box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+        justify-content: space-evenly;
+        position: fixed;
+        height: 40px;
+        bottom: 0;
+        width: 100%;
+        background-color: #fff;
+        left: 0;
+        font-size: 10pt;
+        color: #514cec;
+    }
+
+    .footer-child {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
