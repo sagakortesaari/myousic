@@ -1,6 +1,5 @@
 body {
-    background-color: #c6c1df;
-    max-width: 2000px;
+    background-color: white;
     overflow-x: hidden;
 }
 
@@ -14,16 +13,38 @@ body {
     justify-content: center;
     align-items: center;
 }
+
 .spotify {
-    padding: 15px;
-    color: #3b39c2;
-    border: 1px solid #3b39c2;
-    background-color: #e1f9c7;
-    box-shadow: 5px 5px #463487;
-    font-size: 13pt;
+    padding: 10px;
+    padding-right: 15px;
+    border-radius: 25px;
+    border: 0px;
+    font-size: 11pt;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+    background-color: black;
+    font-family: Helvetica Neue;
     display: flex;
     align-items: center;
+    color: white;
+}
+
+#sub-header {
+    text-align: center;
+    font-size: 16pt;
+    font-family: Work Sans;
     margin-bottom: 20px;
+}
+
+@media screen and (max-width: 700px) {
+    #sub-header {
+        font-size: 12pt;
+    }
+}
+
+#logout {
+    display: none;
+    margin-bottom: 40px;
+    padding: 10px;
 }
 
 .spotify:hover {
@@ -40,21 +61,23 @@ body {
 
 .header {
     margin-bottom: 20px;
-    font-size: 44pt;
+    font-size: 60pt;
     margin-top: 40px;
     text-align: center;
     font-family: Bluu;
+    color: #a19ffc;
+}
+
+@media screen and (max-width: 700px) {
+    .header {
+        font-size: 40pt;
+    }
 }
 
 .info {
     text-align: center;
     margin-bottom: 20px;
     font-family: Work Sans;
-}
-
-#logout {
-    display: none;
-    margin-bottom: 40px;
 }
 
 .flex-container {
@@ -64,58 +87,20 @@ body {
 }
 
 #mediumterm,
-#shortterm {
+#shortterm,
+#longterm {
     width: 600px;
     background-color: white;
-    padding: 30px;
+    padding: 0 30px 30px 30px;
 }
 
-@keyframes fadeInUp {
-    0% {
-        -webkit-transform: translate(0, 0);
-        -ms-transform: translate(0, 0);
-        transform: translate(0, 0);
+@media screen and (max-width: 700px) {
+    #mediumterm,
+    #shortterm,
+    #longterm {
+        width: 300px;
+        background-color: white;
+        padding: 0 15px 15px 15px;
+        font-size: 10pt;
     }
-
-    100% {
-        opacity: 0.6;
-        -webkit-transform: translate(100%, 0);
-        -ms-transform: translate(100%, 0);
-        transform: translate(100%, 0);
-    }
-}
-
-.fadeInUp {
-    animation: fadeInUp;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-}
-
-.delay24s {
-    animation-delay: 24s;
-    animation-duration: 40s;
-}
-
-.delay12s {
-    animation-delay: 12s;
-    animation-duration: 36s;
-}
-
-.delay10s {
-    animation-delay: 10s;
-    animation-duration: 32s;
-}
-
-.delay5s {
-    animation-delay: 5s;
-    animation-duration: 44s;
-}
-
-.delay32s {
-    animation-delay: 32s;
-    animation-duration: 39s;
-}
-
-.opac {
-    opacity: 0;
 }

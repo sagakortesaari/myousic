@@ -12,10 +12,23 @@
     <body>
 
         <div class="header">
-            spotif-i
+
+            <svg id="musicnote" xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 27 27">
+                <path fill="#514cec" id="Icon_ionic-md-musical-notes" data-name="Icon ionic-md-musical-notes" d="M11.25,4.5V22.612a5.989,5.989,0,0,0-1.87-.288,4.6,4.6,0,1,0,0,9.176,4.763,4.763,0,0,0,4.894-4.859V14.063h14.2v8.55a5.989,5.989,0,0,0-1.87-.288,4.6,4.6,0,1,0,0,9.176A4.763,4.763,0,0,0,31.5,26.641V4.5Zm17.227,6.75h-14.2V7.523h14.2Z" transform="translate(-4.5 -4.5)"/>
+            </svg> 
+
+            <br> 
+
+            s p o t i f - i
         </div>
 
         <div id="login">
+
+            <div id="sub-header"> have you ever wondered which your most loved songs are? <br>
+                or perhaps your most played artist of all time?
+                <br><br>
+                🎵
+            </div>
 
             <div class="info">
                 connect with spotify below to get started
@@ -43,6 +56,9 @@
         </div>
 
         <div id="results" class="text flex-container">
+            <div id="longterm"> <b> 🎵 Top tracks - long term (years) </b>
+                <ol id="toptracks-longterm"></ol>
+            </div>
             <div id="mediumterm"> <b> 🎵 Top tracks - medium term (6 months) </b>
                 <ol id="toptracks-mediumterm"></ol>
             </div>
@@ -50,75 +66,7 @@
                 <ol id="toptracks-shortterm"></ol>
             </div>
         </div>
-
-        <div id="column1">
-            <div id="note" class="fadeInUp opac" style="animation-iteration-count: infinite;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 27 27">
-                    <path id="Icon_ionic-md-musical-notes" data-name="Icon ionic-md-musical-notes" d="M11.25,4.5V22.612a5.989,5.989,0,0,0-1.87-.288,4.6,4.6,0,1,0,0,9.176,4.763,4.763,0,0,0,4.894-4.859V14.063h14.2v8.55a5.989,5.989,0,0,0-1.87-.288,4.6,4.6,0,1,0,0,9.176A4.763,4.763,0,0,0,31.5,26.641V4.5Zm17.227,6.75h-14.2V7.523h14.2Z" transform="translate(-4.5 -4.5)"/>
-                </svg> 
-            </div>
     
-            <div id="note2" class="fadeInUp delay5s opac">
-                <svg xmlns="http://www.w3.org/2000/svg" width="22.507" height="29.25" viewBox="0 0 22.507 29.25">
-                    <path id="Icon_ionic-ios-musical-notes" data-name="Icon ionic-ios-musical-notes" d="M28.568,3.389c-.33.063-14.2,2.756-14.5,2.813a.623.623,0,0,0-.57.563V23.646a1.939,1.939,0,0,1-.169.823,1.874,1.874,0,0,1-1.132.893c-.232.077-.548.148-.921.232-1.695.38-4.528,1.027-4.528,3.642a3.219,3.219,0,0,0,2.932,3.34,3.428,3.428,0,0,0,.5.049h0a8.679,8.679,0,0,0,3.6-.928,3.788,3.788,0,0,0,1.695-3.361V13.395a.558.558,0,0,1,.45-.548l10.688-2.159a.562.562,0,0,1,.675.548v9.2a2.016,2.016,0,0,1-.176.942,1.869,1.869,0,0,1-1.139.893c-.232.077-.619.148-.991.232-1.695.38-4.528,1.02-4.528,3.635a3.225,3.225,0,0,0,2.939,3.4,5.811,5.811,0,0,0,1.364-.063,8.061,8.061,0,0,0,2.566-.914,3.706,3.706,0,0,0,1.934-3.389V3.93A.557.557,0,0,0,28.568,3.389Z" transform="translate(-6.75 -3.375)"/>
-                  </svg>
-            </div> 
-
-            <div id="note3" class="fadeInUp delay10s opac">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16.601" height="29.236" viewBox="0 0 16.601 29.236">
-                    <path id="Icon_ionic-ios-musical-note" data-name="Icon ionic-ios-musical-note" d="M25.615,3.389c-.33.063-8.3,1.695-8.592,1.751a.623.623,0,0,0-.57.563h0V23.639a1.939,1.939,0,0,1-.169.823,1.874,1.874,0,0,1-1.132.893c-.232.077-.548.148-.921.232-1.695.38-4.528,1.027-4.528,3.642a3.262,3.262,0,0,0,2.461,3.312,5.282,5.282,0,0,0,.97.07,8.322,8.322,0,0,0,3.6-.928,3.788,3.788,0,0,0,1.695-3.361V12.171a.558.558,0,0,1,.45-.548L25.4,10.287a1.129,1.129,0,0,0,.9-1.1V3.923A.556.556,0,0,0,25.615,3.389Z" transform="translate(-9.703 -3.375)"/>
-                  </svg>
-            </div>
-
-            <div id="note4" class="fadeInUp delay24s opac">
-                <svg xmlns="http://www.w3.org/2000/svg" width="45" height="31.5" viewBox="0 0 45 31.5">
-                    <path id="Icon_awesome-cloud" data-name="Icon awesome-cloud" d="M37.8,15.933A6.758,6.758,0,0,0,31.5,6.75a6.716,6.716,0,0,0-3.748,1.139,11.251,11.251,0,0,0-21,5.611c0,.19.007.38.014.57a10.128,10.128,0,0,0,3.361,19.68H36a9,9,0,0,0,1.8-17.817Z" transform="translate(0 -2.25)"/>
-                  </svg>
-            </div>
-        </div>
-
-        <div id="column2">
-            <div id="note" class="fadeInUp delay12s opac" style="animation-iteration-count: infinite;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 27 27">
-                    <path id="Icon_ionic-md-musical-notes" data-name="Icon ionic-md-musical-notes" d="M11.25,4.5V22.612a5.989,5.989,0,0,0-1.87-.288,4.6,4.6,0,1,0,0,9.176,4.763,4.763,0,0,0,4.894-4.859V14.063h14.2v8.55a5.989,5.989,0,0,0-1.87-.288,4.6,4.6,0,1,0,0,9.176A4.763,4.763,0,0,0,31.5,26.641V4.5Zm17.227,6.75h-14.2V7.523h14.2Z" transform="translate(-4.5 -4.5)"/>
-                </svg> 
-            </div>
-
-            <div id="note" class="fadeInUp delay32s opac" style="animation-iteration-count: infinite;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 27 27">
-                    <path id="Icon_ionic-md-musical-notes" data-name="Icon ionic-md-musical-notes" d="M11.25,4.5V22.612a5.989,5.989,0,0,0-1.87-.288,4.6,4.6,0,1,0,0,9.176,4.763,4.763,0,0,0,4.894-4.859V14.063h14.2v8.55a5.989,5.989,0,0,0-1.87-.288,4.6,4.6,0,1,0,0,9.176A4.763,4.763,0,0,0,31.5,26.641V4.5Zm17.227,6.75h-14.2V7.523h14.2Z" transform="translate(-4.5 -4.5)"/>
-                </svg> 
-            </div>
-    
-            <div id="note2" class="fadeInUp delay10s opac">
-                <svg xmlns="http://www.w3.org/2000/svg" width="22.507" height="29.25" viewBox="0 0 22.507 29.25">
-                    <path id="Icon_ionic-ios-musical-notes" data-name="Icon ionic-ios-musical-notes" d="M28.568,3.389c-.33.063-14.2,2.756-14.5,2.813a.623.623,0,0,0-.57.563V23.646a1.939,1.939,0,0,1-.169.823,1.874,1.874,0,0,1-1.132.893c-.232.077-.548.148-.921.232-1.695.38-4.528,1.027-4.528,3.642a3.219,3.219,0,0,0,2.932,3.34,3.428,3.428,0,0,0,.5.049h0a8.679,8.679,0,0,0,3.6-.928,3.788,3.788,0,0,0,1.695-3.361V13.395a.558.558,0,0,1,.45-.548l10.688-2.159a.562.562,0,0,1,.675.548v9.2a2.016,2.016,0,0,1-.176.942,1.869,1.869,0,0,1-1.139.893c-.232.077-.619.148-.991.232-1.695.38-4.528,1.02-4.528,3.635a3.225,3.225,0,0,0,2.939,3.4,5.811,5.811,0,0,0,1.364-.063,8.061,8.061,0,0,0,2.566-.914,3.706,3.706,0,0,0,1.934-3.389V3.93A.557.557,0,0,0,28.568,3.389Z" transform="translate(-6.75 -3.375)"/>
-                  </svg>
-            </div> 
-
-            <div id="note4" class="fadeInUp delay12s opac">
-                <svg xmlns="http://www.w3.org/2000/svg" width="45" height="31.5" viewBox="0 0 45 31.5">
-                    <path id="Icon_awesome-cloud" data-name="Icon awesome-cloud" d="M37.8,15.933A6.758,6.758,0,0,0,31.5,6.75a6.716,6.716,0,0,0-3.748,1.139,11.251,11.251,0,0,0-21,5.611c0,.19.007.38.014.57a10.128,10.128,0,0,0,3.361,19.68H36a9,9,0,0,0,1.8-17.817Z" transform="translate(0 -2.25)"/>
-                  </svg>
-            </div>
-
-            <div id="note3" class="fadeInUp delay5s opac">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16.601" height="29.236" viewBox="0 0 16.601 29.236">
-                    <path id="Icon_ionic-ios-musical-note" data-name="Icon ionic-ios-musical-note" d="M25.615,3.389c-.33.063-8.3,1.695-8.592,1.751a.623.623,0,0,0-.57.563h0V23.639a1.939,1.939,0,0,1-.169.823,1.874,1.874,0,0,1-1.132.893c-.232.077-.548.148-.921.232-1.695.38-4.528,1.027-4.528,3.642a3.262,3.262,0,0,0,2.461,3.312,5.282,5.282,0,0,0,.97.07,8.322,8.322,0,0,0,3.6-.928,3.788,3.788,0,0,0,1.695-3.361V12.171a.558.558,0,0,1,.45-.548L25.4,10.287a1.129,1.129,0,0,0,.9-1.1V3.923A.556.556,0,0,0,25.615,3.389Z" transform="translate(-9.703 -3.375)"/>
-                  </svg>
-            </div>
-
-            <div id="note4" class="fadeInUp delay5s opac">
-                <svg xmlns="http://www.w3.org/2000/svg" width="45" height="31.5" viewBox="0 0 45 31.5">
-                    <path id="Icon_awesome-cloud" data-name="Icon awesome-cloud" d="M37.8,15.933A6.758,6.758,0,0,0,31.5,6.75a6.716,6.716,0,0,0-3.748,1.139,11.251,11.251,0,0,0-21,5.611c0,.19.007.38.014.57a10.128,10.128,0,0,0,3.361,19.68H36a9,9,0,0,0,1.8-17.817Z" transform="translate(0 -2.25)"/>
-                  </svg>
-            </div>
-
-            <div id="note4" class="fadeInUp delay32s opac">
-                <svg xmlns="http://www.w3.org/2000/svg" width="45" height="31.5" viewBox="0 0 45 31.5">
-                    <path id="Icon_awesome-cloud" data-name="Icon awesome-cloud" d="M37.8,15.933A6.758,6.758,0,0,0,31.5,6.75a6.716,6.716,0,0,0-3.748,1.139,11.251,11.251,0,0,0-21,5.611c0,.19.007.38.014.57a10.128,10.128,0,0,0,3.361,19.68H36a9,9,0,0,0,1.8-17.817Z" transform="translate(0 -2.25)"/>
-                  </svg>
-            </div>
         </div>
     </body>
     <script src="scripts/scripts.js"></script>

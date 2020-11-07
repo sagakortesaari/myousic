@@ -36,6 +36,7 @@ function callajax(term, action, path, token, div) {
         error: function () {
             $("#results").hide();
             $("#login").show();
+            $("#logout").hide();
         },
     });
 }
@@ -86,6 +87,14 @@ function encodeURL() {
                 "tracks",
                 fragments.access_token,
                 "toptracks-mediumterm"
+            );
+
+            callajax(
+                "long_term",
+                topsongs,
+                "tracks",
+                fragments.access_token,
+                "toptracks-longterm"
             );
         } else {
             login.show();
