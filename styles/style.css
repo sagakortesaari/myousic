@@ -105,6 +105,29 @@ body {
     }
 }
 
+#mediumterm-artist,
+#shortterm-artist,
+#longterm-artist {
+    width: 600px;
+    background-color: white;
+    padding: 0 30px 30px 30px;
+}
+
+@media screen and (max-width: 700px) {
+    #mediumterm-artist,
+    #shortterm-artist,
+    #longterm-artist {
+        width: 300px;
+        background-color: white;
+        padding: 0 15px 15px 15px;
+        font-size: 10pt;
+    }
+}
+
+#results {
+    margin-bottom: 60px;
+}
+
 #footer {
     display: none;
 }

@@ -1,13 +1,18 @@
-function topsongs(response, div) {
-    let tracks = document.getElementById(div);
+function ajax_handler(response, div, path) {
+    let existingelement = document.getElementById(div);
 
     for (let index = 0; index < 20; index++) {
-        let newtrack = document.createElement("li");
-        newtrack.innerHTML =
-            response.items[index].name +
-            " by " +
-            response.items[index].artists[0].name;
-        tracks.appendChild(newtrack);
+        let newelement = document.createElement("li");
+
+        if (path == "tracks") {
+            newelement.innerHTML =
+                response.items[index].name +
+                " by " +
+                response.items[index].artists[0].name;
+        } else {
+            newelement.innerHTML = response.items[index].name;
+        }
+        existingelement.appendChild(newelement);
     }
 }
 
@@ -21,7 +26,7 @@ function topsongs(response, div) {
 
 */
 
-function callajax(term, action, path, token, div) {
+function callajax(term, path, token, div) {
     $.ajax({
         url: "https://api.spotify.com/v1/me/top/" + path,
         headers: {
@@ -31,7 +36,8 @@ function callajax(term, action, path, token, div) {
             time_range: term,
         },
         success: function (response) {
-            action(response, div);
+            console.log(response);
+            ajax_handler(response, div, path);
         },
         error: function () {
             $("#results").hide();
@@ -74,11 +80,9 @@ function encodeURL() {
             login.hide();
             //localStorage.removeItem(stateKey);
             logout.show();
-            footer.attr("style", "display: flex;");
 
             callajax(
                 "short_term",
-                topsongs,
                 "tracks",
                 fragments.access_token,
                 "toptracks-shortterm"
@@ -86,7 +90,6 @@ function encodeURL() {
 
             callajax(
                 "medium_term",
-                topsongs,
                 "tracks",
                 fragments.access_token,
                 "toptracks-mediumterm"
@@ -94,10 +97,16 @@ function encodeURL() {
 
             callajax(
                 "long_term",
-                topsongs,
                 "tracks",
                 fragments.access_token,
                 "toptracks-longterm"
+            );
+
+            callajax(
+                "long_term",
+                "artists",
+                fragments.access_token,
+                "topartists-longterm"
             );
         } else {
             login.show();
