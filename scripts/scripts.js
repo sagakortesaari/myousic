@@ -96,10 +96,11 @@ function callajax_artists(access_token) {
             $("#results-artists").hide();
 
             callajax_songs(fragments.access_token);
+            $("#menu-topartists").css("opacity", "0.4");
 
             $("#menu-topartists").click(function () {
-                artists = true;
-                tracks = false;
+                $("#menu-topartists").css("opacity", "1");
+                $("#menu-toptracks").css("opacity", "0.4");
                 $("#results-tracks").hide();
                 $("#results-artists").show();
 
@@ -110,8 +111,8 @@ function callajax_artists(access_token) {
             });
 
             $("#menu-toptracks").click(function () {
-                tracks = true;
-                artists = false;
+                $("#menu-toptracks").css("opacity", "1");
+                $("#menu-topartists").css("opacity", "0.4");
                 $("#results-tracks").show();
                 $("#results-artists").hide();
             });
