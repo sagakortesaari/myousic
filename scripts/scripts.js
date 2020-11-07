@@ -74,7 +74,7 @@ function encodeURL() {
             login.hide();
             //localStorage.removeItem(stateKey);
             logout.show();
-            footer.show();
+            footer.attr("style", "display: flex;");
 
             callajax(
                 "short_term",
