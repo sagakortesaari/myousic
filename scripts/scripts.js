@@ -37,6 +37,7 @@ function callajax(term, action, path, token, div) {
             $("#results").hide();
             $("#login").show();
             $("#logout").hide();
+            $("#footer").hide();
         },
     });
 }
@@ -60,6 +61,7 @@ function encodeURL() {
     var results = $("#results");
     var login = $("#login");
     var logout = $("#logout");
+    var footer = $("#footer");
 
     var fragments = encodeURL();
 
@@ -72,6 +74,7 @@ function encodeURL() {
             login.hide();
             //localStorage.removeItem(stateKey);
             logout.show();
+            footer.show();
 
             callajax(
                 "short_term",
@@ -99,10 +102,12 @@ function encodeURL() {
         } else {
             login.show();
             results.hide();
+            footer.hide();
         }
     } else {
         login.show();
         results.hide();
+        footer.hide();
     }
 
     $("#login-button").submit(function () {
