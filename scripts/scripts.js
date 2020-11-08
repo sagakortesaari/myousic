@@ -64,14 +64,14 @@ function encodeURL() {
 
 function callajax_songs(access_token) {
     callajax("short_term", "tracks", access_token, "toptracks-shortterm");
-
     callajax("medium_term", "tracks", access_token, "toptracks-mediumterm");
-
     callajax("long_term", "tracks", access_token, "toptracks-longterm");
 }
 
 function callajax_artists(access_token) {
     callajax("long_term", "artists", access_token, "topartists-longterm");
+    callajax("medium_term", "artists", access_token, "topartists-mediumterm");
+    callajax("short_term", "artists", access_token, "topartists-shortterm");
 }
 
 (function () {
