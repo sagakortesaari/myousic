@@ -163,6 +163,11 @@ function showDiv(id) {
                 }
             });
 
+            $("#logout").click(function () {
+                localStorage.removeItem("spotify_auth_state");
+                window.location = "http://api.dcronqvist.se:12432";
+            });
+
             $("#alltime").click(function () {
                 if ($("#results-tracks").hasClass("clicked")) {
                     showDiv("longterm");
@@ -229,7 +234,3 @@ function showDiv(id) {
         return false;
     });
 })();
-
-$("#logout-button").submit(function () {
-    localStorage.removeItem("spotify_auth_state");
-});

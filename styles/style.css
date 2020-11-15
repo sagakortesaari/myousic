@@ -41,12 +41,6 @@ body {
     }
 }
 
-#logout {
-    display: none;
-    margin-bottom: 40px;
-    padding: 10px;
-}
-
 .spotify:hover {
     cursor: pointer;
 }
