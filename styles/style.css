@@ -125,8 +125,45 @@ body {
     }
 }
 
+#topartists-longterm li,
+#topartists-mediumterm li,
+#topartists-shortterm li {
+    display: flex;
+    align-items: center;
+}
+
 #results {
     margin-bottom: 60px;
+    font-family: Roboto;
+}
+
+.artist-photo {
+    width: 100px;
+    height: 100px;
+    margin-right: 20px;
+}
+
+.artist-li {
+    margin-top: 10px;
+}
+
+.number {
+    font-family: "Rubik";
+    font-size: 14pt;
+    color: #aea3bf;
+}
+
+#terms {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 40px;
+    font-family: "Rubik";
+}
+
+#terms-inner {
+    display: flex;
+    width: 600px;
+    justify-content: space-evenly;
 }
 
 #footer {

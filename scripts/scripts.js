@@ -9,10 +9,23 @@ function ajax_handler(response, div, path) {
                 response.items[index].name +
                 " by " +
                 response.items[index].artists[0].name;
+            existingelement.appendChild(newelement);
         } else {
-            newelement.innerHTML = response.items[index].name;
+            let photo = document.createElement("img");
+            let text = document.createElement("span");
+            let number = document.createElement("span");
+            number.innerHTML = index + 1 + ".";
+            number.setAttribute("style", "width: 40px;");
+            number.setAttribute("class", "number");
+            text.innerHTML = response.items[index].name;
+            photo.setAttribute("src", response.items[index].images[0].url);
+            photo.setAttribute("class", "artist-photo");
+            newelement.appendChild(number);
+            newelement.appendChild(photo);
+            newelement.appendChild(text);
+            newelement.setAttribute("class", "artist-li");
+            existingelement.appendChild(newelement);
         }
-        existingelement.appendChild(newelement);
     }
 }
 
@@ -36,7 +49,6 @@ function callajax(term, path, token, div) {
             time_range: term,
         },
         success: function (response) {
-            console.log(response);
             ajax_handler(response, div, path);
         },
         error: function () {
@@ -74,6 +86,13 @@ function callajax_artists(access_token) {
     callajax("short_term", "artists", access_token, "topartists-shortterm");
 }
 
+function showDiv(id) {
+    div = "#" + id;
+    id = $(div);
+    id.show();
+    id.siblings().hide();
+}
+
 (function () {
     var stateKey = "spotify_auth_state";
     var results = $("#results");
@@ -85,15 +104,20 @@ function callajax_artists(access_token) {
     var fragments = encodeURL();
 
     if (fragments != null) {
+        var longterms = true;
+        var mediumterms = false;
+        var shortterms = false;
         var currentState = fragments.state;
         var storedState = localStorage.getItem(stateKey);
 
         if (fragments.access_token && currentState == storedState) {
             results.show();
             login.hide();
-            //localStorage.removeItem(stateKey);
             logout.show();
             $("#results-artists").hide();
+            $("#results-tracks").addClass("clicked");
+
+            showDiv("longterm");
 
             callajax_songs(fragments.access_token);
             $("#menu-topartists").css("opacity", "0.4");
@@ -103,18 +127,74 @@ function callajax_artists(access_token) {
                 $("#menu-toptracks").css("opacity", "0.4");
                 $("#results-tracks").hide();
                 $("#results-artists").show();
+                $("#results-artists").addClass("clicked");
+                $("#results-tracks").removeClass("clicked");
 
                 if (artists_called != true) {
                     callajax_artists(fragments.access_token);
                     artists_called = true;
+                }
+
+                if (longterms) {
+                    showDiv("longterm-artist");
+                } else if (mediumterms) {
+                    showDiv("mediumterm-artist");
+                } else {
+                    showDiv("shortterm-artist");
                 }
             });
 
             $("#menu-toptracks").click(function () {
                 $("#menu-toptracks").css("opacity", "1");
                 $("#menu-topartists").css("opacity", "0.4");
-                $("#results-tracks").show();
                 $("#results-artists").hide();
+                $("#results-artists").removeClass("clicked");
+                $("#results-tracks").addClass("clicked");
+                $("#results-tracks").show();
+
+                if (longterms) {
+                    showDiv("longterm");
+                } else if (mediumterms) {
+                    showDiv("mediumterm");
+                } else {
+                    showDiv("shortterm");
+                }
+            });
+
+            $("#alltime").click(function () {
+                if ($("#results-tracks").hasClass("clicked")) {
+                    showDiv("longterm");
+                } else {
+                    showDiv("longterm-artist");
+                }
+
+                longterms = true;
+                mediumterms = false;
+                shortterms = false;
+            });
+
+            $("#6months").click(function () {
+                if ($("#results-tracks").hasClass("clicked")) {
+                    showDiv("mediumterm");
+                } else {
+                    showDiv("mediumterm-artist");
+                }
+
+                mediumterms = true;
+                shortterms = false;
+                longterms = false;
+            });
+
+            $("#lastmonth").click(function () {
+                if ($("#results-tracks").hasClass("clicked")) {
+                    showDiv("shortterm");
+                } else {
+                    showDiv("shortterm-artist");
+                }
+
+                shortterms = true;
+                longterms = false;
+                mediumterms = false;
             });
         } else {
             login.show();
