@@ -56,6 +56,7 @@ function callajax(term, path, token, div) {
             $("#login").show();
             $("#logout").hide();
             $("#footer").hide();
+            $("#terms").hide();
         },
     });
 }
@@ -99,6 +100,7 @@ function showDiv(id) {
     var login = $("#login");
     var logout = $("#logout");
     var footer = $("#footer");
+    var terms = $("#terms");
     var artists_called = false;
 
     var fragments = encodeURL();
@@ -200,11 +202,13 @@ function showDiv(id) {
             login.show();
             results.hide();
             footer.hide();
+            terms.hide();
         }
     } else {
         login.show();
         results.hide();
         footer.hide();
+        terms.hide();
     }
 
     $("#login-button").submit(function () {
