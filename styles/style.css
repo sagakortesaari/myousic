@@ -126,6 +126,7 @@ body {
     width: 100px;
     height: 100px;
     margin-right: 20px;
+    border-radius: 10px;
 }
 
 .artist-li {
@@ -139,18 +140,20 @@ body {
 }
 
 #terms {
-    display: flex;
-    justify-content: center;
     padding-bottom: 40px;
     font-family: "Rubik";
     font-weight: 500;
     font-size: 16pt;
+    display: flex;
+    justify-content: center;
 }
 
 #terms-inner {
     display: flex;
-    width: 600px;
-    justify-content: space-evenly;
+}
+
+#terms-inner div {
+    margin-right: 20px;
 }
 
 #footer {
@@ -165,6 +168,10 @@ body {
     align-items: center;
     font-family: Work Sans;
     margin-left: 1%;
+}
+
+.footer-child {
+    margin-bottom: 10px;
 }
 
 @media screen and (max-width: 1000px) {
