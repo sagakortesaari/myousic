@@ -80,29 +80,13 @@ body {
     flex-direction: column;
 }
 
+#mediumterm-artist,
+#shortterm-artist,
+#longterm-artist,
 #mediumterm,
 #shortterm,
 #longterm {
-    width: 600px;
-    background-color: white;
-    padding: 0 30px 30px 30px;
-}
-
-@media screen and (max-width: 1000px) {
-    #mediumterm,
-    #shortterm,
-    #longterm {
-        width: 300px;
-        background-color: white;
-        padding: 0 15px 15px 15px;
-        font-size: 10pt;
-    }
-}
-
-#mediumterm-artist,
-#shortterm-artist,
-#longterm-artist {
-    width: 600px;
+    width: 750px;
     background-color: white;
     padding: 0 30px 30px 30px;
     margin-left: 5%;
@@ -111,8 +95,11 @@ body {
 @media screen and (max-width: 1000px) {
     #mediumterm-artist,
     #shortterm-artist,
-    #longterm-artist {
-        width: 300px;
+    #longterm-artist,
+    #longterm,
+    #mediumterm,
+    #shortterm {
+        width: 600px;
         background-color: white;
         padding: 0 15px 15px 15px;
         font-size: 10pt;
@@ -120,15 +107,19 @@ body {
 }
 
 #topartists-longterm li,
+#toptracks-longterm li,
 #topartists-mediumterm li,
-#topartists-shortterm li {
+#toptracks-mediumterm li,
+#topartists-shortterm li,
+#toptracks-shortterm li {
     display: flex;
     align-items: center;
 }
 
 #results {
     margin-bottom: 60px;
-    font-family: Roboto;
+    font-family: "Rubik";
+    font-size: 13pt;
 }
 
 .artist-photo {
@@ -152,6 +143,8 @@ body {
     justify-content: center;
     padding-bottom: 40px;
     font-family: "Rubik";
+    font-weight: 500;
+    font-size: 16pt;
 }
 
 #terms-inner {
@@ -171,7 +164,7 @@ body {
     justify-content: space-evenly;
     align-items: center;
     font-family: Work Sans;
-    margin-left: 3%;
+    margin-left: 1%;
 }
 
 @media screen and (max-width: 1000px) {

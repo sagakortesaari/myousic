@@ -5,10 +5,25 @@ function ajax_handler(response, div, path) {
         let newelement = document.createElement("li");
 
         if (path == "tracks") {
-            newelement.innerHTML =
+            let number = document.createElement("span");
+            let text = document.createElement("span");
+            let photo = document.createElement("img");
+            number.innerHTML = index + 1 + ".";
+            number.setAttribute("style", "width:40px;");
+            number.setAttribute("class", "number");
+            photo.setAttribute(
+                "src",
+                response.items[index].album.images[0].url
+            );
+            photo.setAttribute("class", "artist-photo");
+            text.innerHTML =
                 response.items[index].name +
-                " by " +
+                "<br />" +
                 response.items[index].artists[0].name;
+            newelement.appendChild(number);
+            newelement.appendChild(photo);
+            newelement.appendChild(text);
+            newelement.setAttribute("class", "artist-li");
             existingelement.appendChild(newelement);
         } else {
             let photo = document.createElement("img");
@@ -50,6 +65,7 @@ function callajax(term, path, token, div) {
         },
         success: function (response) {
             ajax_handler(response, div, path);
+            console.log(response);
         },
         error: function () {
             $("#results").hide();
