@@ -1,3 +1,3 @@
 # spotif-i
 
-💗 currently in progress 💗 
+💗 currently in progress, redoing this atm 💗 
