@@ -1,9 +1,11 @@
 import React from "react";
+import { HomePage } from "./pages/HomePage";
 
 function App() {
     return (
         <div className="App">
             <header className="App-header">
+                <HomePage />
                 <p>
                     Edit <code>src/App.tsx</code> and save to reload. :)
                 </p>
