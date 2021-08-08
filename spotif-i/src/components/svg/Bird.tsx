@@ -3,8 +3,8 @@ import React from "react";
 export const Bird = () => {
     return (
         <svg
-            width="712"
-            height="380"
+            width="500"
+            height="300"
             viewBox="0 0 712 380"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
