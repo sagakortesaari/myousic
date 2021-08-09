@@ -53,39 +53,9 @@ const Wrapper = styled.div`
   height: 100vh;
 `;
 
-const GreenBlur = styled.div`
-  background-color: #b6e3b4;
-  width: 70%;
-  max-width: 1000px;
-  height: 800px;
-  border-radius: 30px;
-  filter: blur(100px);
-  position: absolute;
-  bottom: -100px;
-  left: -100px;
-  z-index: -1;
-  border-radius: 50%;
-  overflow: hidden;
-`;
-
-const PurpleBlur = styled.div`
-  background-color: #c39cff;
-  width: 70%;
-  max-width: 1000px;
-  height: 800px;
-  border-radius: 30px;
-  filter: blur(100px);
-  position: absolute;
-  z-index: -1;
-  right: -100px;
-  top: -300px;
-  border-radius: 50%;
-  overflow: hidden;
-`;
-
 const GlobalStyle = createGlobalStyle`
   body {
-    background-color: #FBF8FF;
+    background-color: #d6fad4;
     overflow: hidden;
   }
 `;
@@ -94,8 +64,6 @@ export const HomePage = () => {
   return (
     <>
       <GlobalStyle />
-      <GreenBlur>hi</GreenBlur>
-      <PurpleBlur>hi</PurpleBlur>
       <Wrapper>
         <div>
           <HeaderText>
