@@ -1,24 +1,40 @@
 import express from "express";
 import axios from "axios";
-//import cookieSession from 'cookie-session';
+import cookieSession from "cookie-session";
+import cors from "cors";
 
 async function main() {
   //var appScopes = "";
   var app = express();
   app.use(express.json());
 
-  //app.use(cookieSession({name: "session", keys: ["key1", "key2"]}))
+  app.use(
+    cors({
+      origin: ["http://localhost:3000"],
+    })
+  );
+
+  app.use(cookieSession({ name: "session", keys: ["key1", "key2"] }));
 
   app.get("/callback", async (req, res) => {
-    console.log("code ", req.query.code);
-    //res.redirect(sagak.se/spotifi)
-    res.status(200).send("yaaay");
+    if (!req.query.code) {
+      res.status(400).send("invalid response");
+    } else {
+      console.log("code ", req.query.code);
+      req.session!.test = "testing cookies";
+      res.redirect("http://localhost:3000/stats");
+    }
   });
 
   app.get("/authorize", async (req, res) => {
     res.redirect(
       `https://accounts.spotify.com/authorize?client_id=${process.env.client_id}&response_type=code&redirect_uri=${process.env.redirect_uri}`
     );
+  });
+
+  app.get("/checkCookie", async (req, res) => {
+    console.log("cookie", req.session!.test);
+    res.status(200).send("cookie is set");
   });
 
   // Request new access & refresh token
@@ -35,9 +51,9 @@ async function main() {
       })
       .then((response) => {
         // Do I set these in the cache? With the cookie-session
-        let access_token = response.data.access_token;
-        let expires_in = response.data.expires_in;
-        let refresh_token = response.data.refresh_token;
+        req.session!.access_token = response.data.access_token;
+        req.session!.expires_in = response.data.expires_in;
+        req.session!.refresh_token = response.data.refresh_token;
 
         res.status(200).send("successfully authenticated!");
       })
@@ -53,7 +69,7 @@ async function main() {
       "https://accounts.spotify.com/api/token",
       {
         grant_type: "refresh_token",
-        refresh_token: "refresh_token_here",
+        refresh_token: req.session!.refresh_token,
       },
       {
         headers: {
