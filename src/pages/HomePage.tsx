@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Bird } from "../components/svg/Bird";
 import { SpotifyIcon } from "../components/svg/SpotifyIcon";
 import { createGlobalStyle } from "styled-components";
+import axios from "axios";
 
 const HeaderText = styled.div`
   font-family: dejanire-headline, serif;
@@ -31,7 +32,7 @@ const HeaderSubTextContainer = styled(ParagraphText)`
   margin-top: 20px;
 `;
 
-const HeaderSubText = styled.p`
+const LogInButton = styled.a`
   margin-top: 0px;
   margin-bottom: 0px;
   padding-left: 10px;
@@ -72,7 +73,10 @@ export const HomePage = () => {
           <ParagraphText>... connect below and let's find out! </ParagraphText>
           <HeaderSubTextContainer>
             <SpotifyIcon />
-            <HeaderSubText> Connect with Spotify </HeaderSubText>
+            <LogInButton href="http://localhost:8080/authorize">
+              {" "}
+              Connect with Spotify{" "}
+            </LogInButton>
           </HeaderSubTextContainer>
         </div>
         <SvgWrapper>
