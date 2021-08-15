@@ -4,7 +4,8 @@ import cookieSession from "cookie-session";
 import cors from "cors";
 
 async function main() {
-  //var appScopes = "";
+  var appScopes = "user-top-read user-read-email";
+
   var app = express();
   app.use(express.json());
 
@@ -28,7 +29,7 @@ async function main() {
 
   app.get("/authorize", async (req, res) => {
     res.redirect(
-      `https://accounts.spotify.com/authorize?client_id=${process.env.client_id}&response_type=code&redirect_uri=${process.env.redirect_uri}`
+      `https://accounts.spotify.com/authorize?client_id=${process.env.client_id}&response_type=code&redirect_uri=${process.env.redirect_uri}&scope=${appScopes}`
     );
   });
 
