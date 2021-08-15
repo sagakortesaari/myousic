@@ -2,8 +2,15 @@ import axios from "axios";
 
 export const StatsPage = () => {
   axios
-    .get("http://localhost:8080/checkCookie", { withCredentials: true })
-    .then((res) => {});
-
-  return <div> in development </div>;
+    .post(
+      "http://localhost:8080/getArtists",
+      {
+        time_range: "medium_term",
+      },
+      { withCredentials: true }
+    )
+    .then((res) => {
+      console.log(res.data);
+    });
+  return <div> in development :) </div>;
 };

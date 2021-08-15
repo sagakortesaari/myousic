@@ -1,5 +1,5 @@
 import express from "express";
-import axios from "axios";
+import axios, { AxiosRequestConfig } from "axios";
 import cookieSession from "cookie-session";
 import cors from "cors";
 
@@ -11,6 +11,7 @@ async function main() {
 
   app.use(
     cors({
+      credentials: true,
       origin: ["http://localhost:3000"],
     })
   );
@@ -21,8 +22,11 @@ async function main() {
     if (!req.query.code) {
       res.status(400).send("invalid response");
     } else {
-      console.log("code ", req.query.code);
-      req.session!.test = "testing cookies";
+      req.session!.code = req.query.code;
+      let cred = await getTokens(req);
+      req.session!.access_token = cred.access_token;
+      req.session!.expires_in = cred.expires_in;
+      req.session!.refresh_token = cred.refresh_token;
       res.redirect("http://localhost:3000/stats");
     }
   });
@@ -33,35 +37,38 @@ async function main() {
     );
   });
 
-  app.get("/checkCookie", async (req, res) => {
-    console.log("cookie", req.session!.test);
-    res.status(200).send("cookie is set");
-  });
-
-  // Request new access & refresh token
-  app.post("/getTokens", async (req, res) => {
-    let code = req.body.code;
-
-    axios
-      .post("https://accounts.spotify.com/api/token", {
+  async function getTokens(req: any): Promise<any> {
+    let options: AxiosRequestConfig = {
+      url: "https://accounts.spotify.com/api/token",
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      params: {
         grant_type: "authorization_code",
-        code: code,
+        code: req.session!.code,
         redirect_uri: process.env.redirect_uri,
         client_id: process.env.client_id,
         client_secret: process.env.client_secret,
-      })
-      .then((response) => {
-        // Do I set these in the cache? With the cookie-session
-        req.session!.access_token = response.data.access_token;
-        req.session!.expires_in = response.data.expires_in;
-        req.session!.refresh_token = response.data.refresh_token;
+      },
+    };
 
-        res.status(200).send("successfully authenticated!");
+    return axios(options)
+      .then((response) => {
+        return {
+          access_token: response.data.access_token,
+          expires_in: response.data.expires_in,
+          refresh_token: response.data.refresh_token,
+        };
       })
       .catch((error) => {
-        console.error(error);
-        res.status(400).send("ERROR: something went wrong - please try again");
+        console.log("error in getTokens", error.message);
       });
+  }
+
+  // Request new access & refresh token
+  app.get("/getTokens", async (req, res) => {
+    await getTokens(req);
   });
 
   // Request new access token given refresh token
@@ -86,7 +93,7 @@ async function main() {
         `https://api.spotify.com/v1/me/top/artists?time_range=${req.body.time_range}`,
         {
           headers: {
-            Authorization: req.session!.access_token,
+            Authorization: `Bearer ${req.session!.access_token}`,
           },
         }
       )
