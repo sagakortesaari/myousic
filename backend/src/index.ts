@@ -108,7 +108,7 @@ async function main() {
         `https://api.spotify.com/v1/me/top/tracks?time_range=${req.body.time_range}`,
         {
           headers: {
-            Authorization: req.session!.access_token,
+            Authorization: `Bearer ${req.session!.access_token}`,
           },
         }
       )
