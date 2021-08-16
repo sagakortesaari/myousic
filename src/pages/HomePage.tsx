@@ -44,7 +44,7 @@ const SvgWrapper = styled.div`
 `;
 
 const Wrapper = styled.div`
-  max-width: 1300px;
+  max-width: 1000px;
   margin-left: 20px;
   margin-right: 20px;
   display: flex;
@@ -52,6 +52,16 @@ const Wrapper = styled.div`
   justify-content: space-between;
   margin: auto;
   height: 100vh;
+
+  & a:visited {
+    color: white;
+    text-decoration: none;
+  }
+
+  & a:link {
+    color: white;
+    text-decoration: none;
+  }
 `;
 
 const GlobalStyle = createGlobalStyle`
