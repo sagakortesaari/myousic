@@ -1,8 +1,14 @@
+type Image = {
+  height: number;
+  width: number;
+  url: string;
+};
+
 type Artist = {
   external_urls: object;
   followers: object | undefined;
   genres: string[] | undefined;
-  images: object[] | undefined;
+  images: Image[] | undefined;
   popularity: number | undefined;
   href: string;
   id: string;
@@ -65,7 +71,18 @@ export const ListItem = (props: ListItemProps) => {
   return (
     <>
       {props.statObj?.items.map((item) => {
-        return <h1>{item.name}</h1>;
+        return (
+          <>
+            {(item as Artist).images ? (
+              <div>
+                <img src={(item as Artist).images![0].url} />
+                <h1>{item.name}</h1>
+              </div>
+            ) : (
+              <h1> "hello" </h1>
+            )}
+          </>
+        );
       })}
     </>
   );
