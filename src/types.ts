@@ -62,3 +62,8 @@ export type StatObject = {
   previous: null;
   total: number;
 };
+
+export type User = {
+  display_name: string;
+  external_urls: { spotify: string };
+};

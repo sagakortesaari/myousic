@@ -2,12 +2,13 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
 import { ListItem } from "../components/ListItem";
-import { StatObject } from "../types";
+import { StatObject, User } from "../types";
 import { StatPageMenu } from "../components/StatPageMenu";
 
 export const StatsPage = () => {
-  let [artists, setArtists] = useState<StatObject>();
-  let [tracks, setTracks] = useState<StatObject>();
+  const [artists, setArtists] = useState<StatObject>();
+  const [tracks, setTracks] = useState<StatObject>();
+  const [user, setUser] = useState<User>();
 
   useEffect(() => {
     axios
@@ -35,12 +36,22 @@ export const StatsPage = () => {
       .then((res) => {
         setTracks(res.data);
       });
+
+    axios
+      .get("http://localhost:8080/getUser", {
+        withCredentials: true,
+      })
+      .then((res) => {
+        setUser({
+          display_name: res.data.display_name,
+          external_urls: res.data.external_urls,
+        });
+      });
   }, []);
 
   return (
     <>
-      <div> in development :) </div>
-      <StatPageMenu />
+      <StatPageMenu user={user} />
       <ListItem statObj={artists} />
     </>
   );

@@ -4,7 +4,7 @@ import cookieSession from "cookie-session";
 import cors from "cors";
 
 async function main() {
-  var appScopes = "user-top-read user-read-email";
+  var appScopes = "user-top-read user-read-email user-read-private";
 
   var app = express();
   app.use(express.json());
@@ -112,6 +112,16 @@ async function main() {
           },
         }
       )
+      .then((result) => {
+        res.send(result.data);
+      });
+  });
+
+  app.get("/getUser", async (req, res) => {
+    axios
+      .get("https://api.spotify.com/v1/me", {
+        headers: { Authorization: `Bearer ${req.session!.access_token}` },
+      })
       .then((result) => {
         res.send(result.data);
       });
