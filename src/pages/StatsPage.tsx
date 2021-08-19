@@ -1,7 +1,9 @@
 import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
-import { ListItem, StatObject } from "../components/ListItem";
+import { ListItem } from "../components/ListItem";
+import { StatObject } from "../types";
+import { StatPageMenu } from "../components/StatPageMenu";
 
 export const StatsPage = () => {
   let [artists, setArtists] = useState<StatObject>();
@@ -38,6 +40,7 @@ export const StatsPage = () => {
   return (
     <>
       <div> in development :) </div>
+      <StatPageMenu />
       <ListItem statObj={artists} />
     </>
   );
