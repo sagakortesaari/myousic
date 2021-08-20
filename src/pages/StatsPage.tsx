@@ -9,6 +9,7 @@ export const StatsPage = () => {
   const [artists, setArtists] = useState<StatObject>();
   const [tracks, setTracks] = useState<StatObject>();
   const [user, setUser] = useState<User>();
+  const [display, setDisplay] = useState("artists");
 
   useEffect(() => {
     axios
@@ -52,8 +53,12 @@ export const StatsPage = () => {
 
   return (
     <>
-      <StatPageMenu user={user} />
-      <ListItem statObj={artists} />
+      <StatPageMenu user={user} toggle={setDisplay} />
+      {display === "artists" ? (
+        <ListItem statObj={artists} />
+      ) : (
+        <ListItem statObj={tracks} />
+      )}
     </>
   );
 };

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { User } from "../types";
 
@@ -20,11 +20,20 @@ const ParagraphText = styled.div`
   font-style: normal;
 `;
 
+const TypeToggle = styled.div`
+  display: flex;
+`;
+
 type StatPageMenuProps = {
   user: User | undefined;
+  toggle: any;
 };
 
 export const StatPageMenu = (props: StatPageMenuProps) => {
+  function toggleType(type: string) {
+    props.toggle(type);
+  }
+
   return (
     <>
       <OuterWrapper>
@@ -33,6 +42,18 @@ export const StatPageMenu = (props: StatPageMenuProps) => {
           <a href={props.user?.external_urls.spotify} target="_blank">
             {props.user?.display_name}
           </a>
+        </ParagraphText>
+        <ParagraphText>
+          <TypeToggle>
+            <div
+              style={{ marginRight: "10px" }}
+              onClick={() => toggleType("artists")}
+            >
+              {" "}
+              Artists{" "}
+            </div>
+            <div onClick={() => toggleType("tracks")}> Songs </div>
+          </TypeToggle>
         </ParagraphText>
       </OuterWrapper>
     </>
