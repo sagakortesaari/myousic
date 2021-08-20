@@ -1,4 +1,4 @@
-import { StatObject, Artist } from "../types";
+import { StatObject, Artist, Track } from "../types";
 import styled from "styled-components";
 
 type ListItemProps = {
@@ -24,6 +24,11 @@ const ParagraphText = styled.div`
   font-style: normal;
 `;
 
+const TrackWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
 export const ListItem = (props: ListItemProps) => {
   return (
     <>
@@ -36,7 +41,19 @@ export const ListItem = (props: ListItemProps) => {
                 <ParagraphText>{item.name}</ParagraphText>
               </ImageDiv>
             ) : (
-              <h1> "hello" </h1>
+              <ImageDiv>
+                <TrackOrArtistImage
+                  src={(item as Track).album.images![0].url}
+                />
+                <TrackWrapper>
+                  <ParagraphText>
+                    <b>{item.name}</b>
+                  </ParagraphText>
+                  <ParagraphText>
+                    {(item as Track).artists[0].name}
+                  </ParagraphText>
+                </TrackWrapper>
+              </ImageDiv>
             )}
           </>
         );

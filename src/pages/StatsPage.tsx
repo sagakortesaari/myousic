@@ -35,6 +35,7 @@ export const StatsPage = () => {
         }
       )
       .then((res) => {
+        console.log(res.data);
         setTracks(res.data);
       });
 

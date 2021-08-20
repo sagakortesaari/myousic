@@ -24,7 +24,7 @@ type Album = {
   external_urls: object;
   href: string;
   id: string;
-  images: object[];
+  images: Image[];
   name: string;
   release_date: string;
   release_date_precision: string;
