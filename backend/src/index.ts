@@ -31,7 +31,7 @@ async function main() {
     }
   });
 
-  app.get("/authorize", async (req, res) => {
+  app.get("/authorize", async (_, res) => {
     res.redirect(
       `https://accounts.spotify.com/authorize?client_id=${process.env.client_id}&response_type=code&redirect_uri=${process.env.redirect_uri}&scope=${appScopes}`
     );
@@ -67,12 +67,12 @@ async function main() {
   }
 
   // Request new access & refresh token
-  app.get("/getTokens", async (req, res) => {
+  app.get("/getTokens", async (req, _) => {
     await getTokens(req);
   });
 
   // Request new access token given refresh token
-  app.post("/refreshToken", async (req, res) => {
+  app.post("/refreshToken", async (req, _) => {
     axios.post(
       "https://accounts.spotify.com/api/token",
       {
