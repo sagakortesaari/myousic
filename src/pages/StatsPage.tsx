@@ -42,6 +42,7 @@ export const StatsPage = () => {
         withCredentials: true,
       })
       .then((res) => {
+        console.log(res.data);
         setUser({
           display_name: res.data.display_name,
           external_urls: res.data.external_urls,

@@ -2,7 +2,17 @@ import React from "react";
 import styled from "styled-components";
 import { User } from "../types";
 
-const OuterWrapper = styled.div``;
+const OuterWrapper = styled.div`
+  & a:visited {
+    color: #aad0a8;
+    text-decoration: none;
+  }
+
+  & a:link {
+    color: #aad0a8;
+    text-decoration: none;
+  }
+`;
 
 const ParagraphText = styled.div`
   font-family: sofia-pro, sans-serif;
@@ -18,7 +28,12 @@ export const StatPageMenu = (props: StatPageMenuProps) => {
   return (
     <>
       <OuterWrapper>
-        <ParagraphText>Signed in as {props.user?.display_name}</ParagraphText>
+        <ParagraphText>
+          Signed in as{" "}
+          <a href={props.user?.external_urls.spotify} target="_blank">
+            {props.user?.display_name}
+          </a>
+        </ParagraphText>
       </OuterWrapper>
     </>
   );

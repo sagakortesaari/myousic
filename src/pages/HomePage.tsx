@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { Bird } from "../components/svg/Bird";
 import { SpotifyIcon } from "../components/svg/SpotifyIcon";
 import { createGlobalStyle } from "styled-components";
-import axios from "axios";
 
 const HeaderText = styled.div`
   font-family: dejanire-headline, serif;
