@@ -6,3 +6,4 @@ EXPOSE 8080
 RUN yarn 
 COPY . .
 RUN yarn tsc
+CMD ["yarn", "docker"]

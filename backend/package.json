@@ -11,7 +11,8 @@
     "watch": "tsc -w",
     "dev": "source .env && nodemon dist/index.js",
     "start": "source .env && node dist/index.js",
-    "start1": "ts-node src/index.ts"
+    "start1": "ts-node src/index.ts",
+    "docker": "node dist/server.js"
   },
   "dependencies": {
     "@types/axios": "^0.14.0",
