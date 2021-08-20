@@ -1,7 +1,7 @@
 FROM node:14
 ENV NODE_ENV=production
 WORKDIR /app
-COPY ["package.json", "yarn.lock", "./"]
+COPY ["package.json", "./"]
 EXPOSE 8080
 RUN yarn 
 COPY . .
