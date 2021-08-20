@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
-import { ListItem } from "../components/ListItem";
+import { ItemList } from "../components/ItemList";
 import { StatObject, User } from "../types";
 import { StatPageMenu } from "../components/StatPageMenu";
 
@@ -56,9 +56,9 @@ export const StatsPage = () => {
     <>
       <StatPageMenu user={user} toggle={setDisplay} />
       {display === "artists" ? (
-        <ListItem statObj={artists} />
+        <ItemList statObj={artists} />
       ) : (
-        <ListItem statObj={tracks} />
+        <ItemList statObj={tracks} />
       )}
     </>
   );

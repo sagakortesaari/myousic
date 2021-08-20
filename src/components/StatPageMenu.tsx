@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import styled from "styled-components";
 import { User } from "../types";
 
@@ -52,7 +51,14 @@ export const StatPageMenu = (props: StatPageMenuProps) => {
               {" "}
               Artists{" "}
             </div>
-            <div onClick={() => toggleType("tracks")}> Songs </div>
+            /
+            <div
+              style={{ marginLeft: "10px" }}
+              onClick={() => toggleType("tracks")}
+            >
+              {" "}
+              Tracks{" "}
+            </div>
           </TypeToggle>
         </ParagraphText>
       </OuterWrapper>
