@@ -10,9 +10,10 @@ export const StatsPage = () => {
   const [tracks, setTracks] = useState<StatObject>();
   const [user, setUser] = useState<User>();
   const [display, setDisplay] = useState("artists");
+  const [term, setTerm] = useState("medterm");
 
-  useEffect(() => {
-    axios
+  let fetchArtists = async () => {
+    let artistsmedterm = await axios
       .post(
         "http://localhost:8080/getArtists",
         {
@@ -21,8 +22,43 @@ export const StatsPage = () => {
         { withCredentials: true }
       )
       .then((res) => {
-        setArtists(res.data);
+        return res.data;
       });
+
+    let artistsshortterm = await axios
+      .post(
+        "http://localhost:8080/getArtists",
+        {
+          time_range: "short_term",
+        },
+        { withCredentials: true }
+      )
+      .then((res) => {
+        return res.data;
+      });
+
+    let artistslongterm = await axios
+      .post(
+        "http://localhost:8080/getArtists",
+        {
+          time_range: "long_term",
+        },
+        { withCredentials: true }
+      )
+      .then((res) => {
+        return res.data;
+      });
+
+    setArtists({
+      shortterm: artistsshortterm,
+      medterm: artistsmedterm,
+      longterm: artistslongterm,
+    });
+  };
+
+  useEffect(() => {
+    fetchArtists();
+    console.log(artists);
 
     axios
       .post(
@@ -55,11 +91,12 @@ export const StatsPage = () => {
 
   return (
     <>
-      <StatPageMenu user={user} toggle={setDisplay} />
+      {term}
+      <StatPageMenu user={user} toggle={setDisplay} toggleTime={setTerm} />
       {display === "artists" ? (
-        <ItemList statObj={artists} />
+        <ItemList statObj={artists} term={term} />
       ) : (
-        <ItemList statObj={tracks} />
+        <ItemList statObj={tracks} term={term} />
       )}
     </>
   );

@@ -2,6 +2,8 @@ import styled from "styled-components";
 import { User } from "../types";
 
 const OuterWrapper = styled.div`
+  margin-bottom: 20px;
+
   & a:visited {
     color: #aad0a8;
     text-decoration: none;
@@ -20,6 +22,7 @@ const ParagraphText = styled.div`
 `;
 
 const PersonalizedMenu = styled.div`
+  margin-bottom: 20px;
   display: flex;
   align-items: center;
 
@@ -35,14 +38,27 @@ const TypeToggle = styled.div`
   display: flex;
 `;
 
+const TimeToggle = styled.div`
+  display: flex;
+`;
+
+const TimeToggleText = styled.div`
+  margin-right: 10px;
+`;
+
 type StatPageMenuProps = {
   user: User | undefined;
   toggle: any;
+  toggleTime: any;
 };
 
 export const StatPageMenu = (props: StatPageMenuProps) => {
   function toggleType(type: string) {
     props.toggle(type);
+  }
+
+  function toggleTime(type: string) {
+    props.toggleTime(type);
   }
 
   return (
@@ -86,6 +102,17 @@ export const StatPageMenu = (props: StatPageMenuProps) => {
               Tracks{" "}
             </div>
           </TypeToggle>
+          <TimeToggle>
+            <TimeToggleText onClick={() => toggleTime("shortterm")}>
+              Short term
+            </TimeToggleText>
+            <TimeToggleText onClick={() => toggleTime("medterm")}>
+              Medium term
+            </TimeToggleText>
+            <TimeToggleText onClick={() => toggleTime("longterm")}>
+              Long term
+            </TimeToggleText>
+          </TimeToggle>
         </ParagraphText>
       </OuterWrapper>
     </>

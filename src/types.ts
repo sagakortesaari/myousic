@@ -54,6 +54,13 @@ export type Track = {
 };
 
 export type StatObject = {
+  longterm: StatObjectObj | undefined;
+  medterm: StatObjectObj | undefined;
+  shortterm: StatObjectObj | undefined;
+  [key: string]: StatObjectObj | undefined;
+};
+
+export type StatObjectObj = {
   href: string;
   items: Track[] | Artist[];
   limit: number;

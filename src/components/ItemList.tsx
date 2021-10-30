@@ -1,14 +1,23 @@
-import { StatObject } from "../types";
+import { useEffect, useState } from "react";
+import { StatObject, StatObjectObj } from "../types";
 import { ListItem } from "./ListItem";
 
 type ListItemProps = {
   statObj: StatObject | undefined;
+  term: string;
 };
 
 export const ItemList = (props: ListItemProps) => {
+  let [mapObj, setMapObj] = useState<undefined | StatObjectObj>();
+
+  useEffect(() => {
+    setMapObj(props.statObj ? props.statObj![props.term] : undefined);
+  }, [props.statObj, props.term]);
+
   return (
     <>
-      {props.statObj?.items.map((item) => {
+      {mapObj?.items.map((item) => {
+        console.log(props.statObj);
         return (
           <>
             <ListItem item={item} />

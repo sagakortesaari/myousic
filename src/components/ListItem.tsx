@@ -36,7 +36,9 @@ export const ListItem = (props: ListItemProps) => {
       {(props.item as Artist).images ? (
         <ImageDiv>
           <TrackOrArtistImage src={(props.item as Artist).images![0].url} />
-          <ParagraphText>{props.item.name}</ParagraphText>
+          <ParagraphText>
+            <b>{props.item.name}</b>
+          </ParagraphText>
         </ImageDiv>
       ) : (
         <ImageDiv>
