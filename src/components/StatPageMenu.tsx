@@ -19,6 +19,18 @@ const ParagraphText = styled.div`
   font-style: normal;
 `;
 
+const PersonalizedMenu = styled.div`
+  display: flex;
+  align-items: center;
+
+  & > img {
+    border-radius: 50%;
+    margin-right: 20px;
+  }
+`;
+
+const SignedIn = styled.div``;
+
 const TypeToggle = styled.div`
   display: flex;
 `;
@@ -37,10 +49,24 @@ export const StatPageMenu = (props: StatPageMenuProps) => {
     <>
       <OuterWrapper>
         <ParagraphText>
-          Signed in as{" "}
-          <a href={props.user?.external_urls.spotify} target="_blank">
-            {props.user?.display_name}
-          </a>
+          <PersonalizedMenu>
+            <img
+              src={props.user?.image}
+              alt="profilepic"
+              width="150"
+              height="150"
+            />
+            <SignedIn>
+              Signed in as{" "}
+              <a
+                href={props.user?.external_urls.spotify}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {props.user?.display_name}
+              </a>
+            </SignedIn>
+          </PersonalizedMenu>
         </ParagraphText>
         <ParagraphText>
           <TypeToggle>

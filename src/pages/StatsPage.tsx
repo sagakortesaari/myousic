@@ -48,6 +48,7 @@ export const StatsPage = () => {
         setUser({
           display_name: res.data.display_name,
           external_urls: res.data.external_urls,
+          image: res.data.images[0].url,
         });
       });
   }, []);

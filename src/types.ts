@@ -66,4 +66,5 @@ export type StatObject = {
 export type User = {
   display_name: string;
   external_urls: { spotify: string };
+  image: string;
 };
