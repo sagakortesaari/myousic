@@ -17,7 +17,6 @@ export const ItemList = (props: ListItemProps) => {
   return (
     <>
       {mapObj?.items.map((item) => {
-        console.log(props.statObj);
         return (
           <>
             <ListItem item={item} />

@@ -56,11 +56,8 @@ export const StatsPage = () => {
     });
   };
 
-  useEffect(() => {
-    fetchArtists();
-    console.log(artists);
-
-    axios
+  let fetchTracks = async () => {
+    let tracksmedterm = await axios
       .post(
         "http://localhost:8080/getTracks",
         {
@@ -71,16 +68,53 @@ export const StatsPage = () => {
         }
       )
       .then((res) => {
-        console.log(res.data);
-        setTracks(res.data);
+        return res.data;
       });
+
+    let trackslongterm = await axios
+      .post(
+        "http://localhost:8080/getTracks",
+        {
+          time_range: "long_term",
+        },
+        {
+          withCredentials: true,
+        }
+      )
+      .then((res) => {
+        return res.data;
+      });
+
+    let tracksshortterm = await axios
+      .post(
+        "http://localhost:8080/getTracks",
+        {
+          time_range: "short_term",
+        },
+        {
+          withCredentials: true,
+        }
+      )
+      .then((res) => {
+        return res.data;
+      });
+
+    setTracks({
+      shortterm: tracksshortterm,
+      medterm: tracksmedterm,
+      longterm: trackslongterm,
+    });
+  };
+
+  useEffect(() => {
+    fetchArtists();
+    fetchTracks();
 
     axios
       .get("http://localhost:8080/getUser", {
         withCredentials: true,
       })
       .then((res) => {
-        console.log(res.data);
         setUser({
           display_name: res.data.display_name,
           external_urls: res.data.external_urls,
@@ -91,7 +125,6 @@ export const StatsPage = () => {
 
   return (
     <>
-      {term}
       <StatPageMenu user={user} toggle={setDisplay} toggleTime={setTerm} />
       {display === "artists" ? (
         <ItemList statObj={artists} term={term} />
