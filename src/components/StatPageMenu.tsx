@@ -46,10 +46,21 @@ const TimeToggleText = styled.div`
   margin-right: 10px;
 `;
 
+const ArtistsText = styled.div<{ selected: string }>`
+  margin-right: 10px;
+  color: ${(props) => (props.selected == "artists" ? "pink" : "black")};
+`;
+
+const TrackText = styled.div<{ selected: string }>`
+  margin-left: 10px;
+  color: ${(props) => (props.selected == "tracks" ? "pink" : "black")};
+`;
+
 type StatPageMenuProps = {
   user: User | undefined;
   toggle: any;
   toggleTime: any;
+  displayType: string;
 };
 
 export const StatPageMenu = (props: StatPageMenuProps) => {
@@ -86,21 +97,21 @@ export const StatPageMenu = (props: StatPageMenuProps) => {
         </ParagraphText>
         <ParagraphText>
           <TypeToggle>
-            <div
-              style={{ marginRight: "10px" }}
+            <ArtistsText
+              selected={props.displayType}
               onClick={() => toggleType("artists")}
             >
               {" "}
               Artists{" "}
-            </div>
+            </ArtistsText>
             /
-            <div
-              style={{ marginLeft: "10px" }}
+            <TrackText
+              selected={props.displayType}
               onClick={() => toggleType("tracks")}
             >
               {" "}
               Tracks{" "}
-            </div>
+            </TrackText>
           </TypeToggle>
           <TimeToggle>
             <TimeToggleText onClick={() => toggleTime("shortterm")}>

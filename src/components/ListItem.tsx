@@ -13,7 +13,7 @@ const TrackWrapper = styled.div`
   flex-direction: column;
 `;
 
-const TrackOrArtistImage = styled.img`
+const TrackImage = styled.img`
   width: 120px;
   height: 120px;
   margin-right: 20px;
@@ -21,30 +21,52 @@ const TrackOrArtistImage = styled.img`
   margin-bottom: 20px;
 `;
 
-const ImageDiv = styled.div`
+const ArtistImage = styled.img`
+  width: 160px;
+  height: 160px;
+`;
+
+const TrackDiv = styled.div`
   display: flex;
   align-items: center;
 `;
 
+const ArtistDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20px;
+  margin-top: 20px;
+`;
+
+const TrackNum = styled.div`
+  margin-right: 20px;
+`;
+
 type ListItemProps = {
   item: Track | Artist;
+  num: number;
 };
 
 export const ListItem = (props: ListItemProps) => {
   return (
     <>
       {(props.item as Artist).images ? (
-        <ImageDiv>
-          <TrackOrArtistImage src={(props.item as Artist).images![0].url} />
+        <ArtistDiv>
+          <ArtistImage src={(props.item as Artist).images![0].url} />
           <ParagraphText>
-            <b>{props.item.name}</b>
+            <b>
+              {props.num + 1}. {props.item.name}
+            </b>
           </ParagraphText>
-        </ImageDiv>
+        </ArtistDiv>
       ) : (
-        <ImageDiv>
-          <TrackOrArtistImage
-            src={(props.item as Track).album.images![0].url}
-          />
+        <TrackDiv>
+          <TrackNum>
+            <ParagraphText>{props.num + 1}. </ParagraphText>
+          </TrackNum>
+          <TrackImage src={(props.item as Track).album.images![0].url} />
           <TrackWrapper>
             <ParagraphText>
               <b>{props.item.name}</b>
@@ -53,7 +75,7 @@ export const ListItem = (props: ListItemProps) => {
               {(props.item as Track).artists[0].name}
             </ParagraphText>
           </TrackWrapper>
-        </ImageDiv>
+        </TrackDiv>
       )}
     </>
   );

@@ -125,11 +125,16 @@ export const StatsPage = () => {
 
   return (
     <>
-      <StatPageMenu user={user} toggle={setDisplay} toggleTime={setTerm} />
+      <StatPageMenu
+        user={user}
+        toggle={setDisplay}
+        toggleTime={setTerm}
+        displayType={display}
+      />
       {display === "artists" ? (
-        <ItemList statObj={artists} term={term} />
+        <ItemList statObj={artists} term={term} type="artist" />
       ) : (
-        <ItemList statObj={tracks} term={term} />
+        <ItemList statObj={tracks} term={term} type="track" />
       )}
     </>
   );
