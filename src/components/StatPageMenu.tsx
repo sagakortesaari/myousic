@@ -54,13 +54,9 @@ const TimeToggle = styled.div`
   display: flex;
 `;
 
-const TimeToggleText = styled.div`
-  margin-right: 10px;
-`;
-
 const ShortTerm = styled.div<{ term: string }>`
   margin-right: 10px;
-  color: ${(props) => (props.term == "shortterm" ? "#aad0a8" : "black")};
+  color: ${(props) => (props.term === "shortterm" ? "#aad0a8" : "black")};
 
   &:hover {
     cursor: pointer;
@@ -69,7 +65,7 @@ const ShortTerm = styled.div<{ term: string }>`
 
 const MediumTerm = styled.div<{ term: string }>`
   margin-right: 10px;
-  color: ${(props) => (props.term == "medterm" ? "#aad0a8" : "black")};
+  color: ${(props) => (props.term === "medterm" ? "#aad0a8" : "black")};
 
   &:hover {
     cursor: pointer;
@@ -78,7 +74,7 @@ const MediumTerm = styled.div<{ term: string }>`
 
 const LongTerm = styled.div<{ term: string }>`
   margin-right: 10px;
-  color: ${(props) => (props.term == "longterm" ? "#aad0a8" : "black")};
+  color: ${(props) => (props.term === "longterm" ? "#aad0a8" : "black")};
 
   &:hover {
     cursor: pointer;
@@ -87,7 +83,7 @@ const LongTerm = styled.div<{ term: string }>`
 
 const ArtistsText = styled.div<{ selected: string }>`
   margin-right: 10px;
-  color: ${(props) => (props.selected == "artists" ? "#aad0a8" : "black")};
+  color: ${(props) => (props.selected === "artists" ? "#aad0a8" : "black")};
 
   &:hover {
     cursor: pointer;
@@ -96,7 +92,7 @@ const ArtistsText = styled.div<{ selected: string }>`
 
 const TrackText = styled.div<{ selected: string }>`
   margin-left: 10px;
-  color: ${(props) => (props.selected == "tracks" ? "#aad0a8" : "black")};
+  color: ${(props) => (props.selected === "tracks" ? "#aad0a8" : "black")};
 
   &:hover {
     cursor: pointer;

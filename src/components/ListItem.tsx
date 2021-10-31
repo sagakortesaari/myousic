@@ -22,8 +22,8 @@ const TrackImage = styled.img`
 `;
 
 const ArtistImage = styled.img`
-  width: 300px;
-  height: 300px;
+  max-width: 300px;
+  max-height: 300px;
 `;
 
 const TrackDiv = styled.div`
@@ -33,12 +33,14 @@ const TrackDiv = styled.div`
 `;
 
 const ArtistDiv = styled.div`
+  width: 300px;
+  height: 300px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   margin-right: 20px;
-  margin-top: 20px;
+  margin-top: 45px;
 `;
 
 const TrackNum = styled.div`

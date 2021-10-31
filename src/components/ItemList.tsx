@@ -25,7 +25,7 @@ export const ItemList = (props: ListItemProps) => {
 
   return (
     <>
-      {props.type == "artist" ? (
+      {props.type === "artist" ? (
         <ArtistDiv>
           {mapObj?.items.map((item, index) => {
             return (
