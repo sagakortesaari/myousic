@@ -4,6 +4,7 @@ import { useState } from "react";
 import { ItemList } from "../components/ItemList";
 import { StatObject, User } from "../types";
 import { StatPageMenu } from "../components/StatPageMenu";
+import styled from "styled-components";
 
 export const StatsPage = () => {
   const [artists, setArtists] = useState<StatObject>();
@@ -12,10 +13,20 @@ export const StatsPage = () => {
   const [display, setDisplay] = useState("artists");
   const [term, setTerm] = useState("medterm");
 
+  const ContentWrapper = styled.div`
+    display: flex;
+    width: 100%;
+    justify-content: center;
+  `;
+
+  const ContentDiv = styled.div`
+    max-width: 1200px;
+  `;
+
   let fetchArtists = async () => {
     let artistsmedterm = await axios
       .post(
-        "http://localhost:8080/getArtists",
+        "http://192.168.0.33:8080/getArtists",
         {
           time_range: "medium_term",
         },
@@ -27,7 +38,7 @@ export const StatsPage = () => {
 
     let artistsshortterm = await axios
       .post(
-        "http://localhost:8080/getArtists",
+        "http://192.168.0.33:8080/getArtists",
         {
           time_range: "short_term",
         },
@@ -39,7 +50,7 @@ export const StatsPage = () => {
 
     let artistslongterm = await axios
       .post(
-        "http://localhost:8080/getArtists",
+        "http://192.168.0.33:8080/getArtists",
         {
           time_range: "long_term",
         },
@@ -59,7 +70,7 @@ export const StatsPage = () => {
   let fetchTracks = async () => {
     let tracksmedterm = await axios
       .post(
-        "http://localhost:8080/getTracks",
+        "http://192.168.0.33:8080/getTracks",
         {
           time_range: "medium_term",
         },
@@ -73,7 +84,7 @@ export const StatsPage = () => {
 
     let trackslongterm = await axios
       .post(
-        "http://localhost:8080/getTracks",
+        "http://192.168.0.33:8080/getTracks",
         {
           time_range: "long_term",
         },
@@ -87,7 +98,7 @@ export const StatsPage = () => {
 
     let tracksshortterm = await axios
       .post(
-        "http://localhost:8080/getTracks",
+        "http://192.168.0.33:8080/getTracks",
         {
           time_range: "short_term",
         },
@@ -111,7 +122,7 @@ export const StatsPage = () => {
     fetchTracks();
 
     axios
-      .get("http://localhost:8080/getUser", {
+      .get("http://192.168.0.33:8080/getUser", {
         withCredentials: true,
       })
       .then((res) => {
@@ -130,12 +141,18 @@ export const StatsPage = () => {
         toggle={setDisplay}
         toggleTime={setTerm}
         displayType={display}
+        termType={term}
       />
-      {display === "artists" ? (
-        <ItemList statObj={artists} term={term} type="artist" />
-      ) : (
-        <ItemList statObj={tracks} term={term} type="track" />
-      )}
+
+      <ContentWrapper>
+        <ContentDiv>
+          {display === "artists" ? (
+            <ItemList statObj={artists} term={term} type="artist" />
+          ) : (
+            <ItemList statObj={tracks} term={term} type="track" />
+          )}
+        </ContentDiv>
+      </ContentWrapper>
     </>
   );
 };

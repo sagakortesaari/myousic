@@ -9,9 +9,11 @@ type ListItemProps = {
   type: string;
 };
 
-let ArtistDiv = styled.div`
+const ArtistDiv = styled.div`
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 100px;
 `;
 
 export const ItemList = (props: ListItemProps) => {

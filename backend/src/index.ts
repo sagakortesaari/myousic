@@ -12,7 +12,7 @@ async function main() {
   app.use(
     cors({
       credentials: true,
-      origin: ["http://localhost:3000"],
+      origin: ["http://localhost:3000", "http://192.168.0.33:3000"],
     })
   );
 
@@ -27,7 +27,7 @@ async function main() {
       req.session!.access_token = cred.access_token;
       req.session!.expires_in = cred.expires_in;
       req.session!.refresh_token = cred.refresh_token;
-      res.redirect("http://localhost:3000/stats");
+      res.redirect("http://192.168.0.33:3000/stats");
     }
   });
 

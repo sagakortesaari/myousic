@@ -22,13 +22,14 @@ const TrackImage = styled.img`
 `;
 
 const ArtistImage = styled.img`
-  width: 160px;
-  height: 160px;
+  width: 300px;
+  height: 300px;
 `;
 
 const TrackDiv = styled.div`
   display: flex;
   align-items: center;
+  width: 500px;
 `;
 
 const ArtistDiv = styled.div`

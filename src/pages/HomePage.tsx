@@ -82,7 +82,7 @@ export const HomePage = () => {
           <ParagraphText>... connect below and let's find out! </ParagraphText>
           <HeaderSubTextContainer>
             <SpotifyIcon />
-            <LogInButton href="http://localhost:8080/authorize">
+            <LogInButton href="http://192.168.0.33:8080/authorize">
               {" "}
               Connect with Spotify{" "}
             </LogInButton>
