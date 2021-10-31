@@ -65,7 +65,6 @@ const Wrapper = styled.div`
 
 const GlobalStyle = createGlobalStyle`
   body {
-    background-color: #d6fad4;
     overflow: hidden;
   }
 `;
@@ -77,7 +76,11 @@ export const HomePage = () => {
       <Wrapper>
         <div>
           <HeaderText>
-            Have you ever wondered who your all time favorite artists are?
+            {" "}
+            <b> myousic </b>{" "}
+          </HeaderText>
+          <HeaderText>
+            Ever wondered who your all time favorite artists are?
           </HeaderText>
           <ParagraphText>... connect below and let's find out! </ParagraphText>
           <HeaderSubTextContainer>
